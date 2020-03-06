@@ -1,2 +1,2 @@
-# tesis
-Cosas de tesis 
+# Tesis
+**Autor:** Juan Sebastián Lucero Carrasquilla 
