@@ -109,9 +109,40 @@ base_completa <- transform(base_completa,sexo=factor(sexo,labels=c("H","M","MyH"
 base_completa <- rbind(base_a.3, base_b.2, base_c.3, base_d.3, make.row.names = FALSE)
 nombres <- c("edad","sexo","ori_sex","emb", "lact", "anticon" )
 
-summary(base_a.3)
-h <- 6 +
-m <- 3+
-MyH <- 1+
-H <- 17+
-M <- 16+
+summary(base_d.3)
+###Orient
+h <- 6 + 23 + 8 + 46
+m <- 3 + 5 + 3 + 10
+MyH <- 1 + 7 + 0 + 12
+H <- 17 + 58 + 37 + 150
+M <- 16 + 21 + 15 + 55
+N <- 2
+
+
+orient <- data.frame(
+  Orientación = c("Principalmente Hombres", 
+            "Principalmente Mujeres", 
+            "Hombres y Mujeres indistintamente",
+            "Únicamente Hombres",
+            "Únicamente Mujeres",
+            "No siento atracción sexual ni por Hombres ni por Mujeres"),
+  value = c(83, 21, 20, 262, 107, 2)
+)
+head(orient)
+
+## Hacer plots con ggplot
+library(ggplot2)
+
+# Barplot
+bp<- ggplot(orient, aes(x="", y=value, fill=Orientaci{on}))+
+  geom_bar(width = 1, stat = "identity")
+bp
+## piue plot
+pie <- bp + coord_polar("y", start=0) + 
+  ggtitle("Gráfica de las Preferencias Sexuales") +
+  ylab("Conteos")+
+  xlab(NULL)
+pie
+
+pie + scale_fill_brewer(palette="Blues")+
+  theme_minimal() 
